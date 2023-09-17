@@ -5,22 +5,45 @@ using UnityEngine.SceneManagement;
 
 public class TrocarDeCena : MonoBehaviour
 {
-    public int pontuacao = 0;
+    private static TrocarDeCena instance;
+
+    int score = 0;
+
+    public static TrocarDeCena Instance { get => instance; set => instance = value; }
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public void Jogar()
+    public static void ChangeScene(string sceneName)
     {
-        SceneManager.LoadScene("Jogo");
+        if (Instance != null)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            Debug.LogError("SceneManager instance is null. Make sure to attach the SceneManager script to a GameObject.");
+        }
     }
 
-    public void IrParaOMenu(int pontuacao)
+    public void SetScore(int pontos)
     {
-        this.pontuacao = pontuacao;
-        SceneManager.LoadScene("Menu");
+        score = pontos;
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 
     public void SairDoJogo()

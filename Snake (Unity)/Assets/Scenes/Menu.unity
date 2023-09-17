@@ -415,14 +415,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1108412987}
         m_TargetAssemblyTypeName: TrocarDeCena, Assembly-CSharp
-        m_MethodName: Jogar
-        m_Mode: 1
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Jogo
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &615590231
@@ -671,7 +671,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba64bd66e3dc594ca4cd7212a85f813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pontuacao: 0
 --- !u!4 &1108412988
 Transform:
   m_ObjectHideFlags: 0

@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class TrocarPontuacao : MonoBehaviour
 {
-    TrocarDeCena trocarDeCena;
-
     [SerializeField] TMP_Text pontuacao;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        trocarDeCena = FindObjectOfType<TrocarDeCena>();
-        pontuacao.text = trocarDeCena.pontuacao.ToString();
+        pontuacao.text = TrocarDeCena.Instance.GetScore().ToString();
     }
 }

@@ -11,7 +11,6 @@ public class Snake : MonoBehaviour
     SpawnarCerejas spawnarCerejas;
 
     [SerializeField] List<FilhoSnake> filhos;
-    TrocarDeCena trocarDeCena;
     [SerializeField] GameObject body;
 
     bool crescer = false;
@@ -24,7 +23,6 @@ public class Snake : MonoBehaviour
     private void Start()
     {
         spawnarCerejas = FindObjectOfType<SpawnarCerejas>();
-        trocarDeCena = FindObjectOfType<TrocarDeCena>();
     }
 
     private void Update()
@@ -99,7 +97,8 @@ public class Snake : MonoBehaviour
 
     public void Destruir()
     {
-        trocarDeCena.IrParaOMenu(filhos.Count - 2);
+        TrocarDeCena.Instance.SetScore(filhos.Count - 2);
+        TrocarDeCena.ChangeScene("Menu");
         Destroy(gameObject);
     }
 
