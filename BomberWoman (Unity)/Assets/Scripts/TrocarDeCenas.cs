@@ -5,18 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class TrocarDeCenas : MonoBehaviour
 {
-    [SerializeField] GameObject menu;
-    [SerializeField] GameObject selecaoPersonagens;
+    public static TrocarDeCenas instance;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public void SelecionarPersonagens()
-    {
-        selecaoPersonagens.SetActive(true);
-        menu.SetActive(false);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Quit()
@@ -24,13 +25,8 @@ public class TrocarDeCenas : MonoBehaviour
         Application.Quit();
     }
 
-    public void Jogar()
+    public static void ChangeScene(string sceneName)
     {
-        SceneManager.LoadScene("Jogo");
-    }
-
-    public void VoltarParaOMenu()
-    {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(sceneName);
     }
 }

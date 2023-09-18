@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class GerenciadorDePersonagens : MonoBehaviour
 {
-    TrocarDeCenas trocarDeCenas;
-
-    private void Start()
-    {
-        trocarDeCenas = FindObjectOfType<TrocarDeCenas>();
-    }
-
     public void MatarPersonagem(GameObject personagem)
     {
         Destroy(personagem);
@@ -20,6 +13,6 @@ public class GerenciadorDePersonagens : MonoBehaviour
     IEnumerator VoltarParaOMenu()
     {
         yield return new WaitForSeconds(2f);
-        trocarDeCenas.VoltarParaOMenu();
+        TrocarDeCenas.ChangeScene("Menu");
     }
 }

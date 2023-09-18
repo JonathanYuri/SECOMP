@@ -14,8 +14,6 @@ public class SelecionarJogadores : MonoBehaviour
 
     List<GameObject> selecionados;
 
-    TrocarDeCenas trocarDeCenas;
-
     private void Awake()
     {
         selecionados = new();
@@ -24,7 +22,6 @@ public class SelecionarJogadores : MonoBehaviour
 
     private void Start()
     {
-        trocarDeCenas = FindObjectOfType<TrocarDeCenas>();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -38,7 +35,7 @@ public class SelecionarJogadores : MonoBehaviour
         selecionados.Add(jogadores.Find(x => x.name.Equals(name)));
         if (selecionados.Count == qntPraSelecionar)
         {
-            trocarDeCenas.Jogar();
+            TrocarDeCenas.ChangeScene("Jogo");
         }
     }
 
